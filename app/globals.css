@@ -14,7 +14,10 @@ body{
 }
 
 .main-content{
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .gap-1{
@@ -32,4 +35,14 @@ body{
 
 .grid{
   display: grid;
+}
+
+.left-flex{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.errores{
+  font-size: small;
+  color: red;
 }

@@ -40,7 +40,7 @@ function FormEmpleados(props) {
     "DIC",
   ];
   const [params, setParams] = useState({
-    empleado_id: empleado.id,
+    id_empleado: empleado.id,
     rol_id: empleado.rol_id,
     entregas: 0,
     mes: "",
@@ -73,7 +73,7 @@ function FormEmpleados(props) {
     }
   };
 
-  const guardarEmpleado = () => {
+  const guardarNominaF = () => {
     //MENSAJE EMERGENTE PARA REAFIRMAR QUE SE VA A
     //GUARDAR LA INFORMACION DEL EMPLEADO
     Swal.fire({
@@ -128,11 +128,14 @@ function FormEmpleados(props) {
 
   const limpiarDatos = () => {
     setParams({
-      empleado_id: empleado.id,
+      id_empleado: empleado.id,
       rol_id: empleado.rol_id,
       entregas: "",
       mes: "",
     });
+    setErrores(null)
+    setMesSelect(null)
+    setAnioSelect(null)
   };
 
   const buscarNominaEmp = () => {
@@ -386,7 +389,7 @@ function FormEmpleados(props) {
                       variant="outlined"
                       style={{ width: "20%" }}
                       onClick={() => {
-                        guardarEmpleado();
+                        guardarNominaF();
                       }}
                     >
                       Guardar

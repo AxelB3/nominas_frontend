@@ -46,3 +46,9 @@ body{
   font-size: small;
   color: red;
 }
+
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

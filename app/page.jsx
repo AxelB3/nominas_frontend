@@ -1,14 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as Mui from "@mui/material";
 import * as Fa from "react-icons/fa";
 import FormEmpleado from "../components/empleado/FormEmpleado";
+import FormEmpleados from "../components/empleado/FormEmpleados";
+import empleadoService from "../services/empleadoService";
 
 function Home() {
   //AGREGAR SOLO SIRVE PARA PODER MOSTRAR EL ACORDION
   //CON EL FORMULARIO DE ALTA DE EMPLEADOS
   const [agregar, setAgregar] = useState(false);
+  const [empleados, setEmpleados] = useState(null)
+
+
+  useEffect(() => {
+    if(empleados == null){
+
+      empleadoService.getEmpleados(setEmpleados, () => {
+        Swal.fire("Error", "Ha ocurrido un error al cargar los empleados", "error");
+      });
+    }
+  }, []);
 
   return (
     <div className="container grid gap-3">
@@ -35,6 +48,16 @@ function Home() {
             activeState={setAgregar}
           />
         )}
+      </div>
+
+      <div className="container grid gap-3">
+        {empleados !== null && 
+        empleados.map((empleado, index) => {
+          return(
+            <FormEmpleados key={index} empleado={empleado}/>
+          )
+        })
+      }
       </div>
     </div>
   );

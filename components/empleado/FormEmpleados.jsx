@@ -103,7 +103,11 @@ function FormEmpleados(props) {
       confirmButtonText: "Aceptar",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.reload();
+        if (data.success) {
+          limpiarDatos()
+          setSeleccionado('a')
+          setNomina(data.nominas[0])
+        }
       }
     });
   };
@@ -130,7 +134,7 @@ function FormEmpleados(props) {
     setParams({
       id_empleado: empleado.id,
       rol_id: empleado.rol_id,
-      entregas: "",
+      entregas: 0,
       mes: "",
     });
     setErrores(null)
